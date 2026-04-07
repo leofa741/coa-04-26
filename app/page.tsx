@@ -262,6 +262,8 @@ function PremiumSlider({ onPlayVideo }: { onPlayVideo?: () => void }) {
         </div>
       )}
 
+
+
       {/* ✨ Slides - SIEMPRE se renderizan */}
       <AnimatePresence initial={false} custom={direction} mode="wait">
         <motion.div
@@ -320,13 +322,15 @@ function PremiumSlider({ onPlayVideo }: { onPlayVideo?: () => void }) {
                     <ArrowRight size={18} />
                   </motion.button>
 
-                  
+
                 </div>
               </motion.div>
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
+
+
 
       {/* ✨ Controles del slider - SIEMPRE visibles */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 z-20">
@@ -360,8 +364,8 @@ function PremiumSlider({ onPlayVideo }: { onPlayVideo?: () => void }) {
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all ${index === currentSlide
-                  ? "slider-dot-active w-8"
-                  : "bg-white/40 hover:bg-white/70"
+                ? "slider-dot-active w-8"
+                : "bg-white/40 hover:bg-white/70"
                 }`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
@@ -393,6 +397,8 @@ function PremiumSlider({ onPlayVideo }: { onPlayVideo?: () => void }) {
     </section>
   );
 }
+
+
 // ==========================================
 // 🧩 COMPONENTE: STATS ANIMADOS
 // ==========================================
@@ -500,6 +506,8 @@ function ServicesSection() {
       features: ["Instalación en 24hs", "Sin pegamentos", "Acabado de lujo"]
     },
   ];
+
+  
 
   return (
     <section id="servicios" className="py-24 relative overflow-hidden">
