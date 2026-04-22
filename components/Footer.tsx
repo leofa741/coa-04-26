@@ -196,7 +196,7 @@ export default function Footer() {
                       <p className="text-gray-300 text-sm font-medium group-hover:text-yellow-400 transition-colors">
                         {contactInfo.email}
                       </p>
-                      <p className="text-gray-500 text-xs mt-1">Respondemos en menos de 24hs</p>
+                      <p className="text-gray-500 text-xs mt-1">Respondemos en 24hs</p>
                     </div>
                   </motion.a>
                 </div>
