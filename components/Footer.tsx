@@ -260,9 +260,9 @@ export default function Footer() {
               
               <span className="text-gray-600">•</span>
               
-              <span className="text-gray-500 text-sm flex items-center gap-1">
+              <span className=" text-gray-500 text-sm flex items-center gap-1">
                   <a href="https://tumarca.ar" target="_blank" rel="noopener noreferrer">
-                  Hecho por <Sparkles size={12} className="text-yellow-400" /> Tumarca.ar 
+                  Diseñado por<Sparkles size={12} className="text-yellow-400" /> Tumarca.ar 
                 </a>
               </span>
             </div>
