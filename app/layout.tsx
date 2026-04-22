@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import CustomCursor from "@/components/ui/CustomCursor";
+import { Analytics } from "@vercel/analytics/next"
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"], 
@@ -31,12 +32,14 @@ export default function RootLayout({
     >
      <body className="min-h-screen flex flex-col bg-black text-gray-100 w-full">
         <Navbar />
+      
         <CustomCursor />
 
         {/* ✅ Layout limpio: sin contenedores anidados */}
         <main className="flex-1 pt-[72px] w-full">
           {children}
         </main>
+        <Analytics />
 
         
 
