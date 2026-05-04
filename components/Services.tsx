@@ -27,7 +27,7 @@ const projects: Project[] = [
     image: "/projects/hospital_aleman.jpg",
     category: "Goma",
     tags: ["Comercial", "Seguridad"],
-    orientation: "vertical",
+    orientation: "square",
     details: {
       location: "Hospital Alemán, CABA",
       year: "2025",
