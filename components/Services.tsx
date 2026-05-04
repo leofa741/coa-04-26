@@ -22,16 +22,16 @@ const projects: Project[] = [
   },
   {
     id: "goma-003",
-    title: "Gimnasio Central",
+    title: "Hospital Alemán",
     description: "Piso de goma antideslizante de alta densidad para zona de pesas.",
-    image: "/projects/1.jpeg",
+    image: "/projects/hospital_aleman.jpg",
     category: "Goma",
     tags: ["Comercial", "Seguridad"],
-    orientation: "vertical", // 👈 Definido manualmente
+    orientation: "vertical",
     details: {
-      location: "Belgrano, CABA",
-      year: "2024",
-      surface: "85 m²",
+      location: "Hospital Alemán, CABA",
+      year: "2025",
+      surface: "150 m²",
     },
 
   },
