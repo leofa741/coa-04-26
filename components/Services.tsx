@@ -12,7 +12,7 @@ const projects: Project[] = [
     image: "/projects/1.jpeg",
     category: "Pisos Vinílicos",
     tags: ["Comercial", "9 de Julio", "Pisos Vinílicos"],
-    orientation: "vertical", // 👈 Definido manualmente
+    orientation: "horizontal",
     details: {
       location: "Belgrano, CABA",
       year: "2024",
