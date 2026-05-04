@@ -1,6 +1,36 @@
 "use client";
 import { motion, Variants } from "framer-motion";
 import { HardHat, Layers, Grid3X3, Blocks, ArrowUpRight } from "lucide-react";
+import WorkGallery from "@/components/WorkGallery";
+import { Project } from "@/app/types/project";
+
+const projects: Project[] = [
+  {
+    id: "pvc-001",
+    title: "Lab. 9 de Julio",
+    description: "Instalación de pisos de PVC y vinílicos en Lab. 9 de Julio",
+    image: "/projects/1.jpeg",
+    category: "Pisos Vinílicos",
+    tags: ["Comercial", "9 de Julio", "Pisos Vinílicos"],
+  },
+  {
+    id: "goma-003",
+    title: "Gimnasio Central",
+    description: "Piso de goma antideslizante de alta densidad para zona de pesas.",
+    image: "/projects/1.jpeg",
+    category: "Goma",
+    tags: ["Comercial", "Seguridad"],
+  },
+  {
+    id: "techo-001",
+    title: "Techos",
+    description: "Paneles acústicos y decorativos para techos.",
+    image: "/projects/1.jpeg",
+    category: "Techos",
+    tags: ["Comercial", "Seguridad"],
+  },
+  // ... más proyectos
+];
 
 const services = [
   { title: "Pisos de PVC", icon: Layers },
@@ -23,6 +53,12 @@ const cardVariants: Variants = {
 };
 
 export default function Services() {
+
+  const handleProjectClick = (project: Project) => {
+    // Abrir modal, redirigir, etc.
+    console.log("Proyecto seleccionado:", project.title);
+  };
+
   return (
     <section id="servicios" className="py-24 px-6 bg-dark-800">
       <div className="max-w-7xl mx-auto">
@@ -55,6 +91,17 @@ export default function Services() {
           })}
         </div>
       </div>
+
+      <WorkGallery
+        projects={projects}
+        title="Nuestros Trabajos"
+        subtitle="Cada proyecto es una promesa cumplida con excelencia"
+        enableFilter={true}
+        enableModal={true}
+        columns={{ mobile: 1, tablet: 2, desktop: 3 }}
+      />
+
+
     </section>
   );
 }

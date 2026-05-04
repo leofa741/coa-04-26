@@ -1,0 +1,46 @@
+// app/page.tsx o cualquier página
+"use client";
+
+import WorkGallery from "@/components/WorkGallery";
+import { Project } from "@/types/project";
+
+const projects: Project[] = [
+  {
+    id: "pvc-001",
+    title: "Residencia Norte",
+    description: "Instalación de pisos de PVC en living y dormitorios, con terminaciones premium.",
+    image: "/images/projects/pvc-residencia.jpg",
+    category: "PVC",
+    tags: ["Residencial", "Premium"],
+  },
+  {
+    id: "goma-003",
+    title: "Gimnasio Central",
+    description: "Piso de goma antideslizante de alta densidad para zona de pesas.",
+    image: "/images/projects/goma-gym.jpg",
+    category: "Goma",
+    tags: ["Comercial", "Seguridad"],
+  },
+  // ... más proyectos
+];
+
+export default function HomePage() {
+  const handleProjectClick = (project: Project) => {
+    // Abrir modal, redirigir, etc.
+    console.log("Proyecto seleccionado:", project.title);
+  };
+
+  return (
+    <main>
+      {/* ... otros componentes */}
+      
+      <WorkGallery
+        projects={projects}
+        title="Nuestros Trabajos"
+        subtitle="Cada proyecto es una promesa cumplida"
+        onProjectClick={handleProjectClick}
+        columns={{ mobile: 1, tablet: 2, desktop: 3 }}
+      />
+    </main>
+  );
+}
