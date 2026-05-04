@@ -12,6 +12,13 @@ const projects: Project[] = [
     image: "/projects/1.jpeg",
     category: "Pisos Vinílicos",
     tags: ["Comercial", "9 de Julio", "Pisos Vinílicos"],
+    orientation: "vertical", // 👈 Definido manualmente
+    details: {
+      location: "Belgrano, CABA",
+      year: "2024",
+      surface: "85 m²",
+    },
+
   },
   {
     id: "goma-003",
@@ -20,6 +27,13 @@ const projects: Project[] = [
     image: "/projects/1.jpeg",
     category: "Goma",
     tags: ["Comercial", "Seguridad"],
+    orientation: "vertical", // 👈 Definido manualmente
+    details: {
+      location: "Belgrano, CABA",
+      year: "2024",
+      surface: "85 m²",
+    },
+
   },
   {
     id: "techo-001",
@@ -28,6 +42,12 @@ const projects: Project[] = [
     image: "/projects/1.jpeg",
     category: "Techos",
     tags: ["Comercial", "Seguridad"],
+    orientation: "vertical", // 👈 Definido manualmente
+    details: {
+      location: "Belgrano, CABA",
+      year: "2024",
+      surface: "85 m²",
+    },
   },
   // ... más proyectos
 ];
