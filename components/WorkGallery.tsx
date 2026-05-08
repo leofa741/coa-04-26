@@ -7,10 +7,6 @@ import ProjectCard from "./ProjectCard";
 import CategoryFilter from "./CategoryFilter";
 import ProjectModal from "./ProjectModal";
 
-/* -------------------------------------
-   TYPES
-------------------------------------- */
-
 interface WorkGalleryProps {
   projects: Project[];
   title?: string;
@@ -37,7 +33,6 @@ export default function WorkGallery({
 }: WorkGalleryProps) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [modalIndex, setModalIndex] = useState(0);
 
   // Extraer categorías únicas
   const categories = useMemo(
@@ -50,19 +45,6 @@ export default function WorkGallery({
     if (!activeCategory) return projects;
     return projects.filter((p) => p.category === activeCategory);
   }, [projects, activeCategory]);
-
-  // Navegación del modal
-  const handleNext = () => {
-    const currentIndex = filteredProjects.findIndex((p) => p.id === selectedProject?.id);
-    const nextIndex = (currentIndex + 1) % filteredProjects.length;
-    setSelectedProject(filteredProjects[nextIndex]);
-  };
-
-  const handlePrev = () => {
-    const currentIndex = filteredProjects.findIndex((p) => p.id === selectedProject?.id);
-    const prevIndex = (currentIndex - 1 + filteredProjects.length) % filteredProjects.length;
-    setSelectedProject(filteredProjects[prevIndex]);
-  };
 
   return (
     <section id={sectionId} className="py-24 px-6 bg-dark-800">
@@ -129,15 +111,14 @@ export default function WorkGallery({
         )}
       </div>
 
-      {/* Modal */}
+      {/* Modal - 👇 Sin onNext/onPrev, la navegación es interna */}
       {enableModal && (
         <ProjectModal
           project={selectedProject}
           isOpen={!!selectedProject}
           onClose={() => setSelectedProject(null)}
-          onNext={handleNext}
-          onPrev={handlePrev}
-          showNavigation={filteredProjects.length > 1}
+          // ✅ Eliminamos onNext, onPrev y showNavigation
+          // El modal decide internamente si mostrar flechas según images.length
         />
       )}
     </section>

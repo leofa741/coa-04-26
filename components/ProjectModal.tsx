@@ -12,18 +12,13 @@ interface ProjectModalProps {
     project: Project | null;
     isOpen: boolean;
     onClose: () => void;
-    onNext?: () => void;
-    onPrev?: () => void;
-    showNavigation?: boolean;
+    // 👇 Eliminamos onNext/onPrev porque la navegación es interna
 }
 
 export default function ProjectModal({
     project,
     isOpen,
     onClose,
-    onNext,
-    onPrev,
-    showNavigation = true,
 }: ProjectModalProps) {
     const [showDetails, setShowDetails] = useState(false);
     const [isZoomed, setIsZoomed] = useState(false);
@@ -60,22 +55,22 @@ export default function ProjectModal({
         return () => { document.body.style.overflow = ""; };
     }, [isOpen]);
 
+    // 👇 Imágenes del proyecto actual (gallery o [image])
     const images = project?.gallery?.length
         ? project.gallery
         : [project?.image].filter(Boolean) as string[];
 
-    const handleNext = () => {
+    // 👇 Navegación INTERNA de la galería (solo de este proyecto)
+    const handleNextImage = () => {
         if (!images.length) return;
         setImageLoaded(false);
         setCurrentImageIndex((prev) => (prev + 1) % images.length);
-        onNext?.();
     };
 
-    const handlePrev = () => {
+    const handlePrevImage = () => {
         if (!images.length) return;
         setImageLoaded(false);
         setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-        onPrev?.();
     };
 
     const toggleZoom = () => {
@@ -86,7 +81,7 @@ export default function ProjectModal({
         <AnimatePresence>
             {isOpen && project && (
                 <>
-                    {/* 🔲 BACKDROP - Click aquí cierra el modal */}
+                    {/* 🔲 BACKDROP */}
                     <motion.div
                         key="backdrop"
                         initial={{ opacity: 0 }}
@@ -96,26 +91,23 @@ export default function ProjectModal({
                         className="fixed inset-0 z-50 bg-black cursor-pointer"
                     />
 
-                    {/* 🖼️ ÁREA DE IMAGEN - Tamaño consistente con "safe zone" para controles */}
+                    {/* 🖼️ ÁREA DE IMAGEN */}
                     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-8">
-                        {/* Contenedor con tamaño máximo garantizado */}
                         <div className={`
                             relative flex items-center justify-center
                             ${isZoomed 
-                                ? 'w-[95vw] h-[95vh]'  // Zoom: casi fullscreen
-                                : 'w-full h-full max-w-[90vw] max-h-[85vh]'  // Normal: deja espacio para controles
+                                ? 'w-[95vw] h-[95vh]'
+                                : 'w-full h-full max-w-[90vw] max-h-[85vh]'
                             }
                         `}>
-                            {/* Imagen con tamaño consistente */}
                             <motion.img
                                 key={`${project.id}-${currentImageIndex}`}
                                 src={images[currentImageIndex]}
-                                alt={project.title}
+                                alt={`${project.title} - Vista ${currentImageIndex + 1}`}
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ 
                                     opacity: 1, 
                                     scale: isZoomed ? 1.5 : 1,
-                                    // Transición suave al cargar
                                     transition: { duration: imageLoaded ? 0.3 : 0.4 }
                                 }}
                                 exit={{ opacity: 0, scale: 0.98 }}
@@ -133,13 +125,11 @@ export default function ProjectModal({
                                 `}
                                 draggable={false}
                                 style={{
-                                    // Filtro suave mientras carga
                                     filter: !imageLoaded ? 'blur(8px)' : 'blur(0)',
                                     transition: 'filter 0.3s ease'
                                 }}
                             />
 
-                            {/* Loader mientras carga la imagen */}
                             {!imageLoaded && (
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div className="w-8 h-8 border-2 border-brand-400 border-t-transparent rounded-full animate-spin" />
@@ -148,7 +138,7 @@ export default function ProjectModal({
                         </div>
                     </div>
 
-                    {/* 🎛️ UI OVERLAY - Controles en "safe zone" externa */}
+                    {/* 🎛️ UI OVERLAY */}
                     <motion.div
                         initial={false}
                         animate={{
@@ -157,7 +147,7 @@ export default function ProjectModal({
                         }}
                         className="fixed inset-0 z-[70] pointer-events-none"
                     >
-                        {/* Header - Siempre visible en zona superior segura */}
+                        {/* Header */}
                         <div className="absolute top-0 left-0 right-0 p-4 md:p-6 
                                       bg-gradient-to-b from-black/90 to-transparent
                                       pointer-events-auto">
@@ -209,13 +199,13 @@ export default function ProjectModal({
                             </div>
                         </div>
 
-                        {/* Flechas de navegación - Posicionadas en zona lateral segura */}
-                        {showNavigation && images.length > 1 && (
+                        {/* 👇 Flechas de navegación de GALERÍA (no de proyectos) */}
+                        {images.length > 1 && (
                             <>
                                 <motion.button
                                     whileHover={{ scale: 1.1, x: -2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                                    onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}
                                     className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 
                                              p-2 md:p-3 rounded-full bg-black/70 hover:bg-black/90 
                                              backdrop-blur-sm border border-white/10 transition-all
@@ -229,7 +219,7 @@ export default function ProjectModal({
                                 <motion.button
                                     whileHover={{ scale: 1.1, x: 2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                                    onClick={(e) => { e.stopPropagation(); handleNextImage(); }}
                                     className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 
                                              p-2 md:p-3 rounded-full bg-black/70 hover:bg-black/90 
                                              backdrop-blur-sm border border-white/10 transition-all
@@ -242,7 +232,7 @@ export default function ProjectModal({
                             </>
                         )}
 
-                        {/* Indicadores de galería - Zona inferior segura */}
+                        {/* Indicadores de galería */}
                         {images.length > 1 && (
                             <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 
                                           flex items-center gap-2 pointer-events-auto z-[75]
@@ -268,11 +258,10 @@ export default function ProjectModal({
                         )}
                     </motion.div>
 
-                    {/* 📋 PANEL DE DETALLES - Slide-up con overlay propio */}
+                    {/* 📋 PANEL DE DETALLES */}
                     <AnimatePresence>
                         {showDetails && !isZoomed && (
                             <>
-                                {/* Overlay oscuro para el panel */}
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
@@ -291,7 +280,6 @@ export default function ProjectModal({
                                              max-h-[85vh] overflow-y-auto"
                                     onClick={(e) => e.stopPropagation()}
                                 >
-                                    {/* Handle para cerrar */}
                                     <div className="flex justify-center pt-3 pb-2 sticky top-0 bg-dark-900/98 backdrop-blur-xl z-10">
                                         <button
                                             onClick={(e) => { e.stopPropagation(); setShowDetails(false); }}
@@ -377,7 +365,7 @@ export default function ProjectModal({
                         )}
                     </AnimatePresence>
 
-                    {/* 🔍 ZOOM OVERLAY - Click aquí cierra */}
+                    {/* 🔍 ZOOM OVERLAY */}
                     <AnimatePresence>
                         {isZoomed && (
                             <motion.div

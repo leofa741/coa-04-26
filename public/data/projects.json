@@ -1,0 +1,61 @@
+{
+  "projects": [
+    {
+      "id": "pvc-001",
+      "title": "Lab. 9 de Julio",
+      "description": "Instalación de pisos de PVC y vinílicos en Lab. 9 de Julio",
+      "image": "/projects/1.jpeg",
+      "category": "Pisos Vinílicos",
+      "tags": ["Comercial", "9 de Julio", "Pisos Vinílicos"],
+      "orientation": "horizontal",
+      "gallery": [
+        "/projects/3.jpeg",
+        "/projects/3.jpeg",
+        "/projects/3.jpeg",
+        "/projects/3.jpeg"
+      ],
+      "details": {
+        "location": "Belgrano, CABA",
+        "year": "2024",
+        "surface": "85 m²"
+      }
+    },
+    {
+      "id": "goma-003",
+      "title": "Hospital Alemán",
+      "description": "Piso de goma antideslizante de alta densidad para zona de pesas.",
+      "image": "/projects/hospital_aleman.jpg",
+      "category": "Goma",
+      "tags": ["Comercial", "Seguridad"],
+      "orientation": "square",
+      "gallery": [
+        "/projects/hospital_aleman.jpg",
+        "/projects/3.jpeg"
+      ],
+      "details": {
+        "location": "Hospital Alemán, CABA",
+        "year": "2025",
+        "surface": "150 m²"
+      }
+    },
+    {
+      "id": "techo-001",
+      "title": "Techos Acústicos",
+      "description": "Paneles acústicos y decorativos para techos en espacios comerciales.",
+      "image": "/projects/1.jpeg",
+      "category": "Techos",
+      "tags": ["Comercial", "Acústica"],
+      "orientation": "vertical",
+      "gallery": [
+        "/projects/1.jpeg",
+        "/projects/1.jpeg",
+        "/projects/1.jpeg"
+      ],
+      "details": {
+        "location": "Palermo, CABA",
+        "year": "2024",
+        "surface": "200 m²"
+      }
+    }
+  ]
+}
