@@ -117,7 +117,10 @@ export default function ProjectModal({
 
                     {/* 🎛️ UI OVERLAY - Controles que NO cierran al hacer click */}
                     <motion.div
-                        initial={false}
+                        initial={{
+                            opacity: showDetails || isZoomed ? 0 : 1,
+                            pointerEvents: showDetails || isZoomed ? "none" : "auto"
+                        }}
                         animate={{
                             opacity: showDetails || isZoomed ? 0 : 1,
                             pointerEvents: showDetails || isZoomed ? "none" : "auto"
