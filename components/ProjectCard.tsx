@@ -35,6 +35,7 @@ export default function ProjectCard({
   onClick,
 }: ProjectCardProps) {
   return (
+    
     <motion.article
       custom={index}
       initial="hidden"
@@ -45,6 +46,7 @@ export default function ProjectCard({
       onClick={() => onClick?.(project)}
       className="group relative bg-dark-700 border border-white/5 rounded-2xl overflow-hidden cursor-pointer hover:border-brand-500/30 transition-colors duration-300"
     >
+      
       {/* Imagen con overlay */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <motion.img
@@ -71,6 +73,8 @@ export default function ProjectCard({
         </div>
       </div>
 
+
+
       {/* Contenido */}
       <div className="p-5">
         <h3 className="text-lg font-serif text-white mb-2 group-hover:text-brand-300 transition-colors">
@@ -79,6 +83,7 @@ export default function ProjectCard({
         <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
           {project.description}
         </p>
+
 
         {/* Tags */}
         {project.tags && project.tags.length > 0 && (

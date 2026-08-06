@@ -4,15 +4,16 @@
       "id": "pvc-001",
       "title": "Lab. 9 de Julio",
       "description": "Instalación de pisos de PVC y vinílicos en Lab. 9 de Julio",
-      "image": "/projects/1.jpeg",
+      "image":  "/pisos/1.jpeg",
       "category": "Pisos Vinílicos",
       "tags": ["Comercial", "9 de Julio", "Pisos Vinílicos"],
       "orientation": "horizontal",
       "gallery": [
-        "/projects/3.jpeg",
-        "/projects/3.jpeg",
-        "/projects/3.jpeg",
-        "/projects/3.jpeg"
+        "/pisos/1.jpeg",
+        "/pisos/2.jpeg",
+        "/pisos/3.jpeg",
+        "/pisos/4.jpeg",
+        "/pisos/5.jpeg"       
       ],
       "details": {
         "location": "Belgrano, CABA",
@@ -24,13 +25,19 @@
       "id": "goma-003",
       "title": "Hospital Alemán",
       "description": "Piso de goma antideslizante de alta densidad para zona de pesas.",
-      "image": "/projects/hospital_aleman.jpg",
-      "category": "Goma",
+      "image": "/hospAleman/1.jpg",
+      "category": "Piso de Goma",
       "tags": ["Comercial", "Seguridad"],
       "orientation": "square",
       "gallery": [
-        "/projects/hospital_aleman.jpg",
-        "/projects/3.jpeg"
+        "/hospAleman/1.jpg",
+        "/hospAleman/2.jpg",
+        "/hospAleman/3.jpg",
+        "/hospAleman/4.jpg",
+        "/hospAleman/5.jpg",
+        "/hospAleman/6.jpg",
+        "/hospAleman/7.jpg"
+        
       ],
       "details": {
         "location": "Hospital Alemán, CABA",
@@ -40,16 +47,26 @@
     },
     {
       "id": "techo-001",
-      "title": "Techos Acústicos",
-      "description": "Paneles acústicos y decorativos para techos en espacios comerciales.",
-      "image": "/projects/1.jpeg",
-      "category": "Techos",
-      "tags": ["Comercial", "Acústica"],
+      "title": "INTA Castelar",
+      "description": "Instalación de pisos de PVC y vinílicos en INTA Castelar",
+      "image": "/intaCastelar/1.jpg",
+      "category": "Piso & Paredes",
+      "tags": ["Comercial", "Piso & Paredes"],
       "orientation": "vertical",
       "gallery": [
-        "/projects/1.jpeg",
-        "/projects/1.jpeg",
-        "/projects/1.jpeg"
+        "/intaCastelar/1.jpg",
+        "/intaCastelar/2.jpg",
+        "/intaCastelar/3.jpg",
+        "/intaCastelar/4.jpg",
+        "/intaCastelar/5.jpg",
+        "/intaCastelar/6.jpg",
+        "/intaCastelar/7.jpg",
+        "/intaCastelar/8.jpg",
+        "/intaCastelar/9.jpg",
+        "/intaCastelar/10.jpg",
+        "/intaCastelar/11.jpg",
+        "/intaCastelar/12.jpg"
+        
       ],
       "details": {
         "location": "Palermo, CABA",
