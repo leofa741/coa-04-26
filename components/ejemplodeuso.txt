@@ -1,46 +1,96 @@
-// app/page.tsx o cualquier página
 "use client";
 
+import { motion } from "framer-motion";
+import { HardHat, Layers, Grid3X3, Blocks, ArrowUpRight } from "lucide-react";
+import { projects } from "@/app/lib/projects";
 import WorkGallery from "@/components/WorkGallery";
-import { Project } from "@/types/project";
+import VerticalVideoCard from "@/components/VerticalVideoCard"; // <-- Importamos el nuevo componente
 
-const projects: Project[] = [
+// ... (tu código de services y cardVariants se mantiene igual) ...
+
+// Datos de ejemplo para los videos (puedes moverlos a un archivo lib si crecen)
+const videoShowcase = [
   {
-    id: "pvc-001",
-    title: "Residencia Norte",
-    description: "Instalación de pisos de PVC en living y dormitorios, con terminaciones premium.",
-    image: "/images/projects/pvc-residencia.jpg",
-    category: "PVC",
-    tags: ["Residencial", "Premium"],
+    src: "/videos/piso-pvc-instalacion.mp4", // Ruta a tu video vertical
+    poster: "/images/poster-pvc.jpg",        // Imagen de portada (opcional pero recomendada)
+    title: "Instalación PVC",
+    description: "Acabado perfecto en área comercial de alto tráfico.",
   },
   {
-    id: "goma-003",
-    title: "Gimnasio Central",
-    description: "Piso de goma antideslizante de alta densidad para zona de pesas.",
-    image: "/images/projects/goma-gym.jpg",
-    category: "Goma",
-    tags: ["Comercial", "Seguridad"],
+    src: "/videos/linoleo-hospital.mp4",
+    poster: "/images/poster-linoleo.jpg",
+    title: "Linóleo Hospitalario",
+    description: "Soldadura química y cortes precisos en quirófanos.",
   },
-  // ... más proyectos
+  {
+    src: "/videos/goma-gimnasio.mp4",
+    poster: "/images/poster-goma.jpg",
+    title: "Goma Antimpacto",
+    description: "Protección y diseño para zonas de pesas y crossfit.",
+  },
+  {
+    src: "/videos/alfombra-oficina.mp4",
+    poster: "/images/poster-alfombra.jpg",
+    title: "Alfombra Modular",
+    description: "Renovación exprés para oficinas corporativas.",
+  },
 ];
 
-export default function HomePage() {
-  const handleProjectClick = (project: Project) => {
-    // Abrir modal, redirigir, etc.
-    console.log("Proyecto seleccionado:", project.title);
-  };
-
+export default function Services() {
   return (
-    <main>
-      {/* ... otros componentes */}
-      
+    <section id="servicios" className="py-24 px-6 bg-dark-800">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* ... (Tu código existente de los cards de servicios) ... */}
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+          <span className="text-brand-500 uppercase tracking-widest text-sm font-medium">Nuestros Servicios</span>
+          <h2 className="text-4xl md:text-5xl font-serif mt-3 text-white">Revestimientos de <span className="text-brand-300">alto standing</span></h2>
+          <div className="w-16 h-px bg-brand-500 mx-auto mt-6" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"> {/* Añadí mb-24 para separar */}
+          {/* ... (Tu map de services existente) ... */}
+        </div>
+
+        {/* --- NUEVA SECCIÓN DE VIDEOS VERTICALES --- */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          className="text-center mb-16"
+        >
+          <span className="text-brand-500 uppercase tracking-widest text-sm font-medium">En Acción</span>
+          <h2 className="text-4xl md:text-5xl font-serif mt-3 text-white">Nuestros <span className="text-brand-300">Reels</span></h2>
+          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">Pasa el mouse sobre los videos para ver la magia de nuestra instalación en tiempo real.</p>
+          <div className="w-16 h-px bg-brand-500 mx-auto mt-6" />
+        </motion.div>
+
+        {/* Grid para videos verticales (9:16) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          {videoShowcase.map((video, i) => (
+            <VerticalVideoCard
+              key={video.title}
+              src={video.src}
+              poster={video.poster}
+              title={video.title}
+              description={video.description}
+              index={i}
+            />
+          ))}
+        </div>
+        {/* --------------------------------------------- */}
+
+      </div>
+
+      {/* Tu WorkGallery existente */}
       <WorkGallery
         projects={projects}
         title="Nuestros Trabajos"
-        subtitle="Cada proyecto es una promesa cumplida"
-        onProjectClick={handleProjectClick}
+        subtitle="Cada proyecto es una promesa cumplida con excelencia"
+        enableFilter={true}
+        enableModal={true}
         columns={{ mobile: 1, tablet: 2, desktop: 3 }}
       />
-    </main>
+    </section>
   );
 }

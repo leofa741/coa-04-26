@@ -65,14 +65,39 @@
         "/intaCastelar/9.jpg",
         "/intaCastelar/10.jpg",
         "/intaCastelar/11.jpg",
-        "/intaCastelar/12.jpg"
-        
+        "/intaCastelar/12.jpg"        
       ],
       "details": {
         "location": "Palermo, CABA",
         "year": "2024",
         "surface": "200 m²"
       }
+    },
+    {
+      "id": "lujan-001",
+      "title": "Obra Luján",
+      "description": "Revestimientos de pisos y paredes de PVC paredes Amstrong piso tarkett termo sellados Obra Luján",
+      "image": "/lujan/1.jpeg",
+      "category": "Piso & Paredes",
+      "tags": ["Comercial", "Piso & Paredes"],
+      "orientation": "vertical",
+      "gallery": [
+        "/lujan/1.jpeg",
+        "/lujan/2.jpeg",
+        "/lujan/3.jpeg",
+        "/lujan/4.jpeg",
+        "/lujan/5.jpeg",
+        "/lujan/6.jpeg",
+        "/lujan/7.jpeg",
+        "/lujan/8.jpeg",
+        "/lujan/9.jpeg"        
+      ],
+      "details": {
+        "location": "Luján, BsAs",
+        "year": "2025",
+        "surface": "120 m²"
+      }
     }
   ]
 }
+

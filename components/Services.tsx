@@ -3,6 +3,7 @@ import { motion, Variants } from "framer-motion";
 import { HardHat, Layers, Grid3X3, Blocks, ArrowUpRight } from "lucide-react";
 import { projects } from "@/app/lib/projects";
 import WorkGallery from "@/components/WorkGallery";
+import VerticalVideoCard from "./VerticalVideoCard";
 
 
 
@@ -16,6 +17,25 @@ const services = [
   { title: "Pisos Flotantes", icon: Layers },
   { title: "Pisos Encastrables", icon: Grid3X3 },
   { title: "Pisos de Alfombra en Baldosas", icon: Blocks },
+];
+
+
+const videoShowcase = [
+  {
+    key: 1,
+    src: "/lujan/1.mp4", // Ruta a tu video vertical
+    poster: "/lujan/1.jpeg",        // Imagen de portada (opcional pero recomendada)
+    title: "Piso & Paredes",
+    description: "Acabado perfecto en área comercial de alto tráfico.",
+  },
+  {
+    key: 2,
+    src: "/lujan/2.mp4", // Ruta a tu video vertical
+    poster: "/lujan/1.jpeg",        // Imagen de portada (opcional pero recomendada)
+    title: "Piso & Paredes",
+    description: "Acabado perfecto en área comercial de alto tráfico.",
+  },
+ 
 ];
 
 const cardVariants: Variants = {
@@ -62,6 +82,33 @@ export default function Services() {
           })}
         </div>
       </div>
+
+        {/* --- NUEVA SECCIÓN DE VIDEOS VERTICALES --- */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          className="text-center mb-16"
+        >
+          <span className="text-brand-500 uppercase tracking-widest text-sm font-medium">En Acción</span>
+          <h2 className="text-4xl md:text-5xl font-serif mt-3 text-white">Nuestros <span className="text-brand-300">Reels</span></h2>
+          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">Pasa el mouse sobre los videos para ver la magia de nuestra instalación en tiempo real.</p>
+          <div className="w-16 h-px bg-brand-500 mx-auto mt-6" />
+        </motion.div>
+
+        {/* Grid para videos verticales (9:16) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          {videoShowcase.map((video, i) => (
+            <VerticalVideoCard
+              key={video.key}
+              src={video.src}
+              poster={video.poster}
+              title={video.title}
+              description={video.description}
+              index={i}
+            />
+          ))}
+        </div>
 
       <WorkGallery
         projects={projects}
